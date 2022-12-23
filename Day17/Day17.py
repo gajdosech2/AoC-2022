@@ -52,14 +52,11 @@ def print_cave():
     print()
 
 
-#PART-2
-memory = []
-heights
 
 count = 0
 move = 0
 rock_type = 0
-while count < 1000000000000:
+while count < 2756:
     #print_cave()
     top_index = find_top()
     if top_index > 3:
@@ -67,12 +64,6 @@ while count < 1000000000000:
     else:
         cave = [copy.deepcopy(empty) for _ in range (3-top_index)] + cave
     count += 1
-
-    if count > 20:
-        if (cave[:20], rock_type) in cave_memory:
-            print("REPEATS")
-            break
-        cave_memory.append((cave[:20], rock_type))
     
     cave = copy.deepcopy(rocks[rock_type]) + cave
     rock_type = (rock_type + 1) % len(rocks)
@@ -133,6 +124,12 @@ while count < 1000000000000:
             break
 
 
+with open("export.txt", 'w') as printed:
+    for row in cave:
+        for col in row:
+            print(col, end="", file=printed)
+        print(file=printed)
+    print(file=printed)
 #print_cave()
 #part1
 top_index = find_top()
